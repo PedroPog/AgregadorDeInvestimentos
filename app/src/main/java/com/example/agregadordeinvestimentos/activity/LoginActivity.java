@@ -1,7 +1,14 @@
 package com.example.agregadordeinvestimentos.activity;
 
+import static com.example.agregadordeinvestimentos.util.UtilidadesGerais.isValidEmail;
+import static com.example.agregadordeinvestimentos.util.UtilidadesGerais.isValidPassword;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,18 +18,45 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.agregadordeinvestimentos.MainActivity;
 import com.example.agregadordeinvestimentos.R;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private EditText editEmail,editSenha;
+    private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        find();
+        setOnClicker();
+    }
+
+    private void find(){
+        editEmail = findViewById(R.id.editTextEmail);
+        editSenha = findViewById(R.id.editTextPassword);
+        btnLogin = findViewById(R.id.buttonLogin);
+    }
+    private void setOnClicker(){
+        editSenha.setInputType(InputType.TYPE_CLASS_NUMBER);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isValidEmail(editEmail)){
+                    Snackbar snackbar = Snackbar.make(v,"Email Obrigatorio!",Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                    return;
+                }
+                if(!isValidPassword(editSenha)){
+                    Snackbar snackbar = Snackbar.make(v,"Email Obrigatorio!",Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                    return;
+                }
+                Intent i = new Intent(LoginActivity.this, DashboardActivity.class);
+                startActivity(i);
+                finish();
+            }
         });
     }
 
@@ -34,5 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
         finish(); // Fecha LoginActivity
     }
+
+
 
 }

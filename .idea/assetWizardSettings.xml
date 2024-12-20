@@ -11,9 +11,25 @@
                   <entry key="vectorAssetStep">
                     <value>
                       <PersistentState>
+                        <option name="children">
+                          <map>
+                            <entry key="clipartAsset">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/add_home/baseline_add_home_24.xml" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="dev_logo" />
+                            <entry key="outputName" value="icon_home" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/app/src/main/res/drawable/setting_toolbar.svg" />
                           </map>
                         </option>
                       </PersistentState>

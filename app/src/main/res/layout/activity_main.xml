@@ -30,6 +30,8 @@
         <Button
             android:id="@+id/btn_sign_out"
             android:text="Começa agora"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
